@@ -3,12 +3,14 @@ package com.gherlan.petclinic.bootstrap;
 import com.gherlan.petclinic.model.*;
 import com.gherlan.petclinic.services.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @RequiredArgsConstructor
+@Slf4j
 @Component
 public class DataInitializer implements CommandLineRunner {
     private final OwnerService ownerService;
@@ -76,7 +78,7 @@ public class DataInitializer implements CommandLineRunner {
         fionasCat.setBirthDate(LocalDate.now());
         owner2.getPets().add(fionasCat);
 
-        System.out.println("Loaded owners...");
+        log.info("All owners were successfully loaded.");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
@@ -90,6 +92,6 @@ public class DataInitializer implements CommandLineRunner {
         vet2.getSpecialities().add(savedSurgery);
         vetService.save(vet2);
 
-        System.out.println("Loaded vets...");
+        log.info("All vets were successfully loaded.");
     }
 }
