@@ -41,6 +41,10 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
         storage.entrySet().removeIf(entry -> entry.getValue().equals(t));
     }
 
+    public long count() {
+        return storage.size();
+    }
+
     private Long getNextId() {
         long nextId = 1;
         try {
@@ -51,4 +55,5 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
 
         return nextId;
     }
+
 }

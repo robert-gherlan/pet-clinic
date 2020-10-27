@@ -5,6 +5,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
+
 class OwnerServiceMapTest {
 
     private static final long OWNER_ID = 1L;
@@ -50,10 +52,10 @@ class OwnerServiceMapTest {
 
     @Test
     void findByLastName() {
-        Owner foundOwner = ownerServiceMap.findByLastName(LAST_NAME);
-        Assertions.assertThat(foundOwner).isNotNull();
-        Assertions.assertThat(foundOwner.getLastName()).isEqualTo(LAST_NAME);
-        Assertions.assertThat(foundOwner.getId()).isEqualTo(OWNER_ID);
+        Collection<Owner> foundOwners = ownerServiceMap.findByLastName(LAST_NAME);
+        Assertions.assertThat(foundOwners).isNotNull();
+        Assertions.assertThat(foundOwners.iterator().next().getLastName()).isEqualTo(LAST_NAME);
+        Assertions.assertThat(foundOwners.iterator().next().getId()).isEqualTo(OWNER_ID);
     }
 
     @Test

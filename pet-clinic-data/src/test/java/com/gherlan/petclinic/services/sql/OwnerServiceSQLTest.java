@@ -17,9 +17,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import javax.persistence.Lob;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -81,8 +79,9 @@ class OwnerServiceSQLTest {
         Owner owner = new Owner();
         owner.setId(1L);
         owner.setLastName(lastName);
-        when(ownerRepository.findByLastName(lastName)).thenReturn(owner);
-        assertThat(ownerServiceSQL.findByLastName(lastName)).isEqualTo(owner);
+        List<Owner> ownerList = Arrays.asList(owner);
+        when(ownerRepository.findByLastName(lastName)).thenReturn(ownerList);
+        assertThat(ownerServiceSQL.findByLastName(lastName)).isEqualTo(ownerList);
         verify(ownerRepository).findByLastName(lastName);
     }
 

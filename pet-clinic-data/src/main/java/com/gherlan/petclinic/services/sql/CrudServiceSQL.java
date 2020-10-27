@@ -39,4 +39,9 @@ public abstract class CrudServiceSQL<T, ID> implements CrudService<T, ID> {
     public void deleteById(ID id) {
         crudRepository.deleteById(id);
     }
+
+    @Override
+    public long count() {
+        return crudRepository.count();
+    }
 }

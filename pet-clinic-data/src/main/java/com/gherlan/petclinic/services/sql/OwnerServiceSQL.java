@@ -6,6 +6,8 @@ import com.gherlan.petclinic.services.OwnerService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 @Profile("sql")
 public class OwnerServiceSQL extends CrudServiceSQL<Owner, Long> implements OwnerService {
@@ -18,7 +20,7 @@ public class OwnerServiceSQL extends CrudServiceSQL<Owner, Long> implements Owne
     }
 
     @Override
-    public Owner findByLastName(String lastName) {
+    public Collection<Owner> findByLastName(String lastName) {
         return ownerRepository.findByLastName(lastName);
     }
 }
