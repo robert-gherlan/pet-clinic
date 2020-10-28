@@ -8,5 +8,5 @@ import java.util.Collection;
 
 @Repository
 public interface OwnerRepository extends CrudRepository<Owner, Long> {
-    Collection<Owner> findByLastName(String lastName);
+    Collection<Owner> findByLastNameContaining(String lastName);
 }

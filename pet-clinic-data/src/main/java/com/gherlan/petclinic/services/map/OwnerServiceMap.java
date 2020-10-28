@@ -49,7 +49,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     }
 
     @Override
-    public Collection<Owner> findByLastName(String lastName) {
+    public Collection<Owner> findByLastNameContaining(String lastName) {
         return this.findAll().stream().filter(owner -> owner.getLastName().equalsIgnoreCase(lastName)).collect(Collectors.toList());
     }
 }

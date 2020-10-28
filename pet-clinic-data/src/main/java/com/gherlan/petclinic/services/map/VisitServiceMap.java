@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 @Service
 @Profile({"default", "map"})
@@ -22,5 +25,10 @@ public class VisitServiceMap extends AbstractMapService<Visit, Long> implements 
         }
 
         return null;
+    }
+
+    @Override
+    public Set<Visit> findByPetId(Long petId) {
+        return findAll().stream().filter(visit -> visit.getPet().getId().equals(petId)).collect(Collectors.toSet());
     }
 }

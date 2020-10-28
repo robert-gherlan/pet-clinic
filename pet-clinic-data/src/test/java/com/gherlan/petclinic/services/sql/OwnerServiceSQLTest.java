@@ -80,9 +80,9 @@ class OwnerServiceSQLTest {
         owner.setId(1L);
         owner.setLastName(lastName);
         List<Owner> ownerList = Arrays.asList(owner);
-        when(ownerRepository.findByLastName(lastName)).thenReturn(ownerList);
-        assertThat(ownerServiceSQL.findByLastName(lastName)).isEqualTo(ownerList);
-        verify(ownerRepository).findByLastName(lastName);
+        when(ownerRepository.findByLastNameContaining(lastName)).thenReturn(ownerList);
+        assertThat(ownerServiceSQL.findByLastNameContaining(lastName)).isEqualTo(ownerList);
+        verify(ownerRepository).findByLastNameContaining(lastName);
     }
 
     @Test

@@ -20,7 +20,7 @@ public class OwnerServiceSQL extends CrudServiceSQL<Owner, Long> implements Owne
     }
 
     @Override
-    public Collection<Owner> findByLastName(String lastName) {
-        return ownerRepository.findByLastName(lastName);
+    public Collection<Owner> findByLastNameContaining(String lastName) {
+        return ownerRepository.findByLastNameContaining(lastName);
     }
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html th:fragment="layout (template, menu)">
+<html xmlns:th="https://www.thymeleaf.org" th:fragment="layout (template, menu)">
 
 <head>
 
@@ -84,7 +84,8 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <img alt="Sponsored by Pivotal"
-                         src="../static/resources/images/spring-pivotal-logo.png" th:src="@{/resources/images/spring-pivotal-logo.png}"/></div>
+                         src="../static/resources/images/spring-pivotal-logo.png"
+                         th:src="@{/resources/images/spring-pivotal-logo.png}"/></div>
             </div>
         </div>
     </div>

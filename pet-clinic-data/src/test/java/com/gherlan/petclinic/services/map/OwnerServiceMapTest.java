@@ -52,7 +52,7 @@ class OwnerServiceMapTest {
 
     @Test
     void findByLastName() {
-        Collection<Owner> foundOwners = ownerServiceMap.findByLastName(LAST_NAME);
+        Collection<Owner> foundOwners = ownerServiceMap.findByLastNameContaining(LAST_NAME);
         Assertions.assertThat(foundOwners).isNotNull();
         Assertions.assertThat(foundOwners.iterator().next().getLastName()).isEqualTo(LAST_NAME);
         Assertions.assertThat(foundOwners.iterator().next().getId()).isEqualTo(OWNER_ID);

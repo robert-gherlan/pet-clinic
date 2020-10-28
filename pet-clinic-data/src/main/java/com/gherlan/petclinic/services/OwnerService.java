@@ -5,5 +5,5 @@ import com.gherlan.petclinic.model.Owner;
 import java.util.Collection;
 
 public interface OwnerService extends CrudService<Owner, Long> {
-    Collection<Owner> findByLastName(String lastName);
+    Collection<Owner> findByLastNameContaining(String lastName);
 }

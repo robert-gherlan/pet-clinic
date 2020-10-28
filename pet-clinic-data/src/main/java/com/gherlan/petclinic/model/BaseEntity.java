@@ -21,4 +21,8 @@ public class BaseEntity implements Serializable {
     @GenericGenerator(name = "native", strategy = "native")
     @EqualsAndHashCode.Include
     private Long id;
+
+    public boolean isNew() {
+        return id == null;
+    }
 }
