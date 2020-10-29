@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.HashSet;
@@ -65,7 +66,7 @@ class PetControllerTest {
         petTypes.add(dogPetType);
         petTypes.add(catPetType);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(petController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(petController).addPlaceholderValue("ownerId", "1").build();
     }
 
     @Test
@@ -87,7 +88,7 @@ class PetControllerTest {
 
         mockMvc.perform(post("/owners/1/pets/new"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/owners/1"));
+                .andExpect(redirectedUrl("/owners/1"));
 
         verify(petService).save(any());
     }
@@ -113,7 +114,8 @@ class PetControllerTest {
         when(petTypeService.findAll()).thenReturn(petTypes);
         mockMvc.perform(post("/owners/1/pets/2/edit"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/owners/1"));
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(redirectedUrl("/owners/1"));
 
         verify(petService).save(any());
     }
