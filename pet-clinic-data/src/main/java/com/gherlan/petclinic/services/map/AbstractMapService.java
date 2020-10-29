@@ -18,6 +18,10 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
     }
 
     public T findById(ID id) {
+        if (Objects.isNull(id)) {
+            return null;
+        }
+
         return storage.get(id);
     }
 
@@ -34,7 +38,7 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
     }
 
     public void deleteById(ID id) {
-        storage.remove(id);
+        Optional.ofNullable(id).ifPresent(storage::remove);
     }
 
     public void delete(T t) {
